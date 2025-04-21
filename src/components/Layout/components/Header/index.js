@@ -16,12 +16,12 @@ const MENU_ITEMS = [
     title: "English",
   },
   {
-    icon: <i className="fa-solid fa-earth-asia"></i>,
+    icon: <i className="fa-solid fa-circle-question"></i>,
     title: "Feedback and help",
     to: "/feedback",
   },
   {
-    icon: <i className="fa-solid fa-earth-asia"></i>,
+    icon: <i className="fa-solid fa-keyboard"></i>,
     title: "Keyboard shortcuts",
   },
 ];
