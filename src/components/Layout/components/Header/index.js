@@ -7,8 +7,25 @@ import Button from "~/components/Button";
 import images from "~/assets/images";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
+import Menu from "~/components/Popper/Menu";
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+  {
+    icon: <i className="fa-solid fa-earth-asia"></i>,
+    title: "English",
+  },
+  {
+    icon: <i className="fa-solid fa-earth-asia"></i>,
+    title: "Feedback and help",
+    to: "/feedback",
+  },
+  {
+    icon: <i className="fa-solid fa-earth-asia"></i>,
+    title: "Keyboard shortcuts",
+  },
+];
+
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -59,6 +76,11 @@ function Header() {
           >
             Log In
           </Button>
+          <Menu items={MENU_ITEMS}>
+            <button className={cx("more-btn")}>
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
