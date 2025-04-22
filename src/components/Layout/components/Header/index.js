@@ -14,6 +14,21 @@ const MENU_ITEMS = [
   {
     icon: <i className="fa-solid fa-earth-asia"></i>,
     title: "English",
+    children: {
+      title: 'Language',
+      data: [
+        {
+          type: 'language',
+          code: 'en',
+          title: 'English'
+        },
+        {
+          type: 'language',
+          code: 'vi',
+          title: 'Vietnamese'
+        }
+      ]
+    }
   },
   {
     icon: <i className="fa-solid fa-circle-question"></i>,
@@ -33,6 +48,16 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  // Handle logic
+  const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+      case 'language':
+        // Handle change language
+        break;
+      default:  
+    }
+  }
 
   return (
     <header className={cx("wrapper")}>
@@ -76,7 +101,7 @@ function Header() {
           >
             Log In
           </Button>
-          <Menu items={MENU_ITEMS}>
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx("more-btn")}>
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </button>
