@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-import Tippy from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react";
+import HeadlessTippy from "@tippyjs/react/headless";
 import styles from "./Header.module.scss";
+import "tippy.js/dist/tippy.css";
 
 import Button from "~/components/Button";
 import images from "~/assets/images";
@@ -10,25 +12,27 @@ import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
 
 const cx = classNames.bind(styles);
+const currentUser = true;
+
 const MENU_ITEMS = [
   {
     icon: <i className="fa-solid fa-earth-asia"></i>,
     title: "English",
     children: {
-      title: 'Language',
+      title: "Language",
       data: [
         {
-          type: 'language',
-          code: 'en',
-          title: 'English'
+          type: "language",
+          code: "en",
+          title: "English",
         },
         {
-          type: 'language',
-          code: 'vi',
-          title: 'Vietnamese'
-        }
-      ]
-    }
+          type: "language",
+          code: "vi",
+          title: "Vietnamese",
+        },
+      ],
+    },
   },
   {
     icon: <i className="fa-solid fa-circle-question"></i>,
@@ -52,12 +56,37 @@ function Header() {
   // Handle logic
   const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {
-      case 'language':
+      case "language":
         // Handle change language
         break;
-      default:  
+      default:
     }
-  }
+  };
+
+  const userMenu = [
+    {
+      icon: <i className="fa-solid fa-user"></i>,
+      title: "View profile",
+      to: "/@hoaa",
+    },
+    {
+      icon: <i className="fa-solid fa-coins"></i>,
+      title: "Get coins",
+      to: "/coins",
+    },
+    {
+      icon: <i className="fa-solid fa-gear"></i>,
+      title: "Settings",
+      to: "/settings",
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <i className="fa-solid fa-right-from-bracket"></i>,
+      title: "Log out",
+      to: "/logout",
+      separate: true,
+    },
+  ];
 
   return (
     <header className={cx("wrapper")}>
@@ -65,7 +94,7 @@ function Header() {
         <div className={cx("logo")}>
           <img src={images.logo} alt="Tiktok" />
         </div>
-        <Tippy
+        <HeadlessTippy
           interactive
           visible={searchResult.length > 0}
           render={(attrs) => (
@@ -91,20 +120,45 @@ function Header() {
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </Tippy>
+        </HeadlessTippy>
         <div className={cx("actions")}>
-          <Button text>Upload</Button>
-          <Button
-            primary
-            // className={cx("custom-login")}
-            // rightIcon={<i class="fa-solid fa-right-to-bracket"></i>}
+          {currentUser ? (
+            <>
+              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <i className="fa-solid fa-cloud-arrow-up"></i>
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Upload</Button>
+              <Button
+                primary
+                // className={cx("custom-login")}
+                // rightIcon={<i class="fa-solid fa-right-to-bracket"></i>}
+              >
+                Log In
+              </Button>
+            </>
+          )}
+          <Menu
+            items={currentUser ? userMenu : MENU_ITEMS}
+            onChange={handleMenuChange}
           >
-            Log In
-          </Button>
-          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-            <button className={cx("more-btn")}>
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-            </button>
+            {currentUser ? (
+              <img
+                src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/c16b61b71cceecfadcdfddfe8227a30b~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=1aa18b48&x-expires=1746097200&x-signature=BuOlTzFuA98cdpZBl3EmnQ1PlMk%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                className={cx("user-avatar")}
+                alt="Pham Xuan Hoa"
+              ></img>
+            ) : (
+              <>
+                <button className={cx("more-btn")}>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+              </>
+            )}
           </Menu>
         </div>
       </div>
