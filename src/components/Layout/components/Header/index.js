@@ -10,6 +10,8 @@ import images from "~/assets/images";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
+import { UploadIcon } from "~/components/Icons";
+import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
 const currentUser = true;
@@ -126,7 +128,7 @@ function Header() {
             <>
               <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                 <button className={cx("action-btn")}>
-                  <i className="fa-solid fa-cloud-arrow-up"></i>
+                  <UploadIcon></UploadIcon>
                 </button>
               </Tippy>
             </>
@@ -147,11 +149,12 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/c16b61b71cceecfadcdfddfe8227a30b~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=1aa18b48&x-expires=1746097200&x-signature=BuOlTzFuA98cdpZBl3EmnQ1PlMk%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
                 className={cx("user-avatar")}
                 alt="Pham Xuan Hoa"
-              ></img>
+                fallback="	https://www.gravatar.com/avatar/52b143e7e69dd7cf4d…4ab6ac543e99938b3681406c308f27e.jpg?s=80&d=mp&r=g"
+              ></Image>
             ) : (
               <>
                 <button className={cx("more-btn")}>
