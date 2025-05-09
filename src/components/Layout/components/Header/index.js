@@ -10,7 +10,12 @@ import images from "~/assets/images";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
-import { UploadIcon } from "~/components/Icons";
+import {
+  ActivityIcon,
+  MessagesIcon,
+  UploadIcon,
+  SearchIcon,
+} from "~/components/Icons";
 import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
@@ -119,16 +124,27 @@ function Header() {
             <i className={`fa-solid fa-spinner ${cx("loading")}`}></i>
 
             <button className={cx("search-btn")}>
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <SearchIcon></SearchIcon>
             </button>
           </div>
         </HeadlessTippy>
         <div className={cx("actions")}>
           {currentUser ? (
             <>
-              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+              <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                 <button className={cx("action-btn")}>
                   <UploadIcon></UploadIcon>
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Messages" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <MessagesIcon></MessagesIcon>
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Activity" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <ActivityIcon />
+                  <span className={cx("badge")}>12</span>
                 </button>
               </Tippy>
             </>
