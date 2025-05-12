@@ -92,7 +92,10 @@ function Search() {
         )}
         {loading && <i className={`fa-solid fa-spinner ${cx("loading")}`}></i>}
 
-        <button className={cx("search-btn")}>
+        <button
+          className={cx("search-btn")}
+          onMouseDown={(e) => e.preventDefault()}
+        >
           <SearchIcon></SearchIcon>
         </button>
       </div>
