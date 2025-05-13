@@ -25,12 +25,92 @@ const MENU_ITEMS = [
         {
           type: "language",
           code: "en",
-          title: "English",
+          title: "Anh",
         },
         {
           type: "language",
           code: "vi",
-          title: "Vietnamese",
+          title: "Việt Nam",
+        },
+        {
+          type: "language",
+          code: "da",
+          title: "Đan mạch",
+        },
+        {
+          type: "language",
+          code: "nl",
+          title: "Hà Lan",
+        },
+        {
+          type: "language",
+          code: "fr",
+          title: "Pháp",
+        },
+        {
+          type: "language",
+          code: "de",
+          title: "Đức",
+        },
+        {
+          type: "language",
+          code: "hi",
+          title: "Hindi",
+        },
+        {
+          type: "language",
+          code: "it",
+          title: "Ý",
+        },
+        {
+          type: "language",
+          code: "ja",
+          title: "Nhật",
+        },
+        {
+          type: "language",
+          code: "ko",
+          title: "Hàn Quốc",
+        },
+        {
+          type: "language",
+          code: "pt",
+          title: "Bồ Đào Nha",
+        },
+        {
+          type: "language",
+          code: "ru",
+          title: "Nga",
+        },
+        {
+          type: "language",
+          code: "ro",
+          title: "Romanian",
+        },
+        {
+          type: "language",
+          code: "es",
+          title: "Tây Ban Nha",
+        },
+        {
+          type: "language",
+          code: "sv",
+          title: "Thụy Điển",
+        },
+        {
+          type: "language",
+          code: "th",
+          title: "Thái Lan",
+        },
+        {
+          type: "language",
+          code: "tr",
+          title: "Thổ Nhĩ Kỳ",
+        },
+        {
+          type: "language",
+          code: "zh",
+          title: "Trung Quốc",
         },
       ],
     },
