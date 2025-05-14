@@ -1,8 +1,8 @@
-import * as request from "~/utils/request";
+import * as httpRequest from "~/utils/httpRequest";
 
 export const search = async (q, type = "less") => {
   try {
-    const res = await request.get(
+    const res = await httpRequest.get(
       // `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`,
       `users/search`,
       {
